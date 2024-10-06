@@ -4,8 +4,8 @@ import { CarouselArticle } from "@/components/CarouselArticle";
 import { ArticlesResponse } from "@/types/article";
 
 export default async function Home() {
-  let data = await fetch(`${process.env.API_URL}/api/v1/articles?limit=12&page=1`);
-  let articles: ArticlesResponse = await data.json();
+  const data = await fetch(`${process.env.API_URL}/api/v1/articles?limit=12&page=1`);
+  const articles: ArticlesResponse = await data.json();
 
   const featuredArticles = articles.data.data.slice(0, 4);
   const latestArticles = articles.data.data.slice(4); 
