@@ -11,7 +11,9 @@ export default async function Page({ params }: { params: { id: number } }) {
   const article: ArticleDetailResponse = await response.json();
 
   return (
-    <div className="bg-white px-6 py-6 rounded shadow-md col-span-2">
+    <div className="bg-white px-6 py-6 rounded shadow-md col-span-2 h-fit">
+
+      {/* TODO: Add Share Functionality */}
       <h2 className="text-3xl font-semibold mb-4">{article.data.title}</h2>
 
       <p className="text-sm text-gray-600 mb-2">

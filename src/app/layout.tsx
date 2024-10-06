@@ -27,6 +27,8 @@ export default async function RootLayout({
   const response = await fetch(`${process.env.API_URL}/api/v1/categories`);
   const categories: CategoryResponse = await response.json(); 
 
+  // TODO: Fetch article by category
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
@@ -48,6 +50,9 @@ export default async function RootLayout({
                     <h3 className="text-xl font-semibold mb-2">{category.name} Articles</h3>
                     <ul className="space-y-2">
                       {/* TODO: articles based on category */}
+                      <li>article 1</li>
+                      <li>article 1</li>
+                      <li>article 1</li>
                     </ul>
                   </div>
                 ))}

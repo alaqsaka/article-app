@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardTitle } from './ui/card'
+import { Card, CardHeader, CardTitle, CardDescription } from './ui/card'
 import Link from 'next/link'
 import { Article } from '@/types/article'
 
@@ -9,11 +9,14 @@ type ArticleCardProps = {
 
 const ArticleCard: React.FC<ArticleCardProps> = ({article}) => {
   return (
+    <Link href={`/article/${article.id}`}>
     <Card className='p-4'>
-        <Link href={`/article/${article.id}`}>
-            <CardTitle>{article.title}</CardTitle >
-        </Link>
+      <CardHeader>
+        <CardTitle>{article.title}</CardTitle>
+        <CardDescription>{article.slug}</CardDescription>     
+      </CardHeader>
     </Card>
+  </Link>
   )
 }
 
