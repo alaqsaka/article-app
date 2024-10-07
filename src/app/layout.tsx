@@ -56,17 +56,24 @@ export default async function RootLayout({
           <div className="container mx-auto p-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {children}
-              <aside className="space-y-4">
+              <aside className="space-y-6">
                 {articlesCategory.map((category, index) => (
-                  <div key={index} className="bg-white p-4 rounded shadow-md">
-                    <h3 className="text-xl font-semibold mb-2">{category.categoryName} Articles</h3>
+                  <div
+                    key={index}
+                    className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition duration-200 ease-in-out border border-gray-200"
+                  >
+                    <h3 className="text-lg font-bold text-indigo-700 mb-3">
+                      {category.categoryName} Articles
+                    </h3>
                     <ul className="space-y-2">
                       {category.articles.map((article: Article) => (
-                        <Link key={article.id} href={`/article/${article.id}`} className="p-1 underline">
-                          <li>
-                            {article.title}
-                          </li>
-                        </Link>
+                        <li key={article.id} className="group">
+                          <Link href={`/article/${article.id}`} className="block p-2 rounded hover:bg-indigo-50">
+                            <span className="text-gray-800 group-hover:text-indigo-600 transition-colors duration-150 ease-in-out">
+                              {article.title}
+                            </span>
+                          </Link>
+                        </li>
                       ))}
                     </ul>
                   </div>
