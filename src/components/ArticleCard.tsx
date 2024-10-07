@@ -24,7 +24,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
 
   return (
     <div>
-      <Card className="p-4 transition transform hover:-translate-y-1 hover:shadow-lg rounded-lg border border-gray-200 hover:border-gray-300 bg-white">
+      <Card className="p-4 transition transform hover:-translate-y-1 hover:shadow-lg rounded-lg border border-gray-200 hover:border-gray-300 bg-white h-full">
         <Link href={`/article/${article.id}`}>
           <div className="cursor-pointer">
             <CardHeader>

@@ -18,12 +18,12 @@ export default async function Home({ searchParams }: { searchParams: { page?: st
   const totalPages = articles.data.metadata.total_pages || 1;
 
   return (
-    <section className="bg-white px-4 pb-4 rounded shadow-md col-span-2 h-fit">
+    <section className="bg-white px-4 pb-4 rounded shadow-md md:col-span-2 h-fit">
       <h2 className="text-2xl font-semibold mt-3">Featured Articles</h2>
       <CarouselArticle data={{ ...articles, data: { ...articles.data, data: featuredArticles } }} />
 
       <h2 className="text-2xl font-semibold mt-3">Latest Articles</h2>
-      <div className="grid gap-2 grid-cols-1 md:grid-cols-3 grid-rows-3">
+      <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-3">
         {latestArticles.map(article => (
          <ArticleCard article={article} key={article.id}/>
         ))}
