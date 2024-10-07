@@ -10,7 +10,7 @@ type ArticleCardProps = {
 const ArticleCard: React.FC<ArticleCardProps> = ({article}) => {
   return (
     <Link href={`/article/${article.id}`}>
-    <Card className='p-4'>
+    <Card className='p-2'>
       <CardHeader>
         <CardTitle>{article.title}</CardTitle>
         <CardDescription>{article.slug}</CardDescription>     

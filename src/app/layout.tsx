@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Category, CategoryResponse } from "@/types/article";
+import { Article, CategoryResponse } from "@/types/article";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,7 +28,18 @@ export default async function RootLayout({
   const response = await fetch(`${process.env.API_URL}/api/v1/categories`);
   const categories: CategoryResponse = await response.json(); 
 
-  // TODO: Fetch article by category
+  const articlesCategory = await Promise.all(
+    categories.data.map(async (category) => {
+      const articlesByCategory = await fetch(
+        `${process.env.API_URL}/api/v1/articles?limit=5&page=1&category_id=${category.id}`
+      );
+      const articlesResponse = await articlesByCategory.json();
+      return {
+        categoryName: category.name,
+        articles: articlesResponse.data.data,
+      };
+    })
+  );
 
   return (
     <html lang="en">
@@ -45,14 +57,17 @@ export default async function RootLayout({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {children}
               <aside className="space-y-4">
-                {categories.data.map((category: Category) => (
-                  <div key={category.id} className="bg-white p-4 rounded shadow-md">
-                    <h3 className="text-xl font-semibold mb-2">{category.name} Articles</h3>
+                {articlesCategory.map((category, index) => (
+                  <div key={index} className="bg-white p-4 rounded shadow-md">
+                    <h3 className="text-xl font-semibold mb-2">{category.categoryName} Articles</h3>
                     <ul className="space-y-2">
-                      {/* TODO: articles based on category */}
-                      <li>article 1</li>
-                      <li>article 1</li>
-                      <li>article 1</li>
+                      {category.articles.map((article: Article) => (
+                        <Link key={article.id} href={`/article/${article.id}`} className="p-1">
+                          <li>
+                            {article.title}
+                          </li>
+                        </Link>
+                      ))}
                     </ul>
                   </div>
                 ))}

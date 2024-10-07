@@ -15,8 +15,8 @@ export default async function Home() {
       <h2 className="text-2xl font-semibold mt-3">Featured Articles</h2>
       <CarouselArticle data={{ ...articles, data: { ...articles.data, data: featuredArticles } }} />
 
-      <h2 className="text-2xl font-semibold mt-8">Latest Articles</h2>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-3 grid-rows-3">
+      <h2 className="text-2xl font-semibold mt-3">Latest Articles</h2>
+      <div className="grid gap-2 grid-cols-1 md:grid-cols-3 grid-rows-3">
         {latestArticles.map(article => (
           <ArticleCard key={article.id} article={article} />
         ))}
