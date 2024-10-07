@@ -19,10 +19,10 @@ export default async function Home({ searchParams }: { searchParams: { page?: st
 
   return (
     <section className="bg-white px-4 pb-4 rounded shadow-md md:col-span-2 h-fit">
-      <h2 className="text-2xl font-semibold mt-3">Featured Articles</h2>
+      <h2 className="text-2xl font-semibold mt-3 text-indigo-700">Featured Articles</h2>
       <CarouselArticle data={{ ...articles, data: { ...articles.data, data: featuredArticles } }} />
 
-      <h2 className="text-2xl font-semibold mt-3">Latest Articles</h2>
+      <h2 className="text-2xl font-semibold mt-3 text-indigo-700">Latest Articles</h2>
       <div className="grid gap-3 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-3">
         {latestArticles.map(article => (
          <ArticleCard article={article} key={article.id}/>
