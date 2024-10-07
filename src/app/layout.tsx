@@ -62,7 +62,7 @@ export default async function RootLayout({
                     <h3 className="text-xl font-semibold mb-2">{category.categoryName} Articles</h3>
                     <ul className="space-y-2">
                       {category.articles.map((article: Article) => (
-                        <Link key={article.id} href={`/article/${article.id}`} className="p-1">
+                        <Link key={article.id} href={`/article/${article.id}`} className="p-1 underline">
                           <li>
                             {article.title}
                           </li>

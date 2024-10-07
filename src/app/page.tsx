@@ -11,7 +11,7 @@ export default async function Home() {
   const latestArticles = articles.data.data.slice(4); 
 
   return (
-    <section className="bg-white px-4 pb-4 rounded shadow-md col-span-2">
+    <section className="bg-white px-4 pb-4 rounded shadow-md col-span-2 h-fit">
       <h2 className="text-2xl font-semibold mt-3">Featured Articles</h2>
       <CarouselArticle data={{ ...articles, data: { ...articles.data, data: featuredArticles } }} />
 
